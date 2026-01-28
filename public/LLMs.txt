@@ -1,0 +1,62 @@
+# LLMs.txt for Pragvo Advisors
+
+## Website Overview
+
+Pragvo Advisors LLP is a senior-led strategic advisory firm operating at the intersection of capital strategy and human talent.
+
+## Site Structure
+
+- Hero (`/#`): Strategic Capital & HR Advisory value proposition
+- Who We Are (`/#`): Senior attention, conflict-free independence
+- Services (`/#services`): Investment Banking & HR Advisory domains
+- Why Pragvo (`/#`): Key differentiators and execution approach
+- Track Record (`/#track-record`): Performance metrics and statistics
+- Contact (`/#contact`): Location, contact information, and consultation scheduling
+
+## Core Services
+
+### Investment Banking
+- Debt Capital Markets: Bonds, private credit, syndicated loans, liability management
+- Equity Capital Markets: IPO advisory, pre-IPO blocks, follow-on offerings
+- M&A Advisory: Special situations, cross-border (GCC/APAC), mergers & divestitures
+
+### HR Advisory
+- Talent Acquisition: Executive search, specialist hiring, volume recruitment
+- Talent Development: Leadership programs, coaching & mentoring, succession planning
+- Organization Design: Operating models, role architecture, governance frameworks
+- HRIS Implementation: System selection, configuration & migration, deployment & training
+- Performance Management: OKR frameworks, feedback systems, calibration processes
+- Compensation & Rewards: Benchmarking, incentive design, total rewards
+
+## Track Record
+
+- Aggregate Transaction Value: ₹35,000 Cr+
+- Advisory Experience: 85+ Years
+- Successful Mandates: 250+
+- Indian Markets Covered: 100%
+
+## Tech Stack
+
+- Frontend: React 19.2, TypeScript 5.9, Vite 7.3
+- Styling: Tailwind CSS 4.1, Framer Motion 12.29
+- Icons: Lucide React
+- Typography: Inter font family
+
+## Contact Information
+
+- Phone: +91 93111-42495
+- Email: `info@pragvo.in`
+- Location: Bangalore, India
+- LinkedIn: `https://linkedin.com/company/pragvo-advisors`
+- Instagram: `https://instagram.com/pragvo-advisors`
+
+## Key Differentiators
+
+- Senior partner-led mandates (no delegation to junior staff)
+- Conflict-free independence
+- Cross-border reach with local regulatory expertise
+- Rapid execution and transaction velocity
+
+## Legal
+
+© 2026 Pragvo Advisors LLP. All rights reserved.

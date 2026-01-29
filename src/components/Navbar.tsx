@@ -33,19 +33,19 @@ export default function Navbar() {
         <div className="flex items-center gap-4 md:gap-8 text-xs md:text-sm font-bold text-black/70 uppercase tracking-widest">
           <a
             href="#services"
-            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-green after:transition-all after:duration-300 hover:after:w-full"
+            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
           >
             Services
           </a>
           <a
             href="#track-record"
-            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-green after:transition-all after:duration-300 hover:after:w-full"
+            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
           >
             Track Record
           </a>
           <a
             href="#contact"
-            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-brand-green after:transition-all after:duration-300 hover:after:w-full"
+            className="relative hover:text-black transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
           >
             Contact
           </a>

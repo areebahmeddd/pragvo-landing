@@ -7,13 +7,13 @@ export default function WhoWeAre() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5">
-            <span className="text-xs font-bold tracking-[0.4em] text-black/50 uppercase mb-6 block decoration-brand-green-dark underline underline-offset-8 decoration-2">
+            <span className="text-xs font-bold tracking-[0.4em] text-black/50 uppercase mb-6 block decoration-black underline underline-offset-8 decoration-2">
               Our Identity
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tighter leading-none mb-10">
               Senior attention, <br /> uncompromised <br /> independence.
             </h2>
-            <div className="h-24 w-[2px] bg-gradient-to-b from-brand-green to-transparent hidden lg:block"></div>
+            <div className="h-24 w-[2px] bg-gradient-to-b from-black/30 to-transparent hidden lg:block"></div>
           </div>
 
           <div className="lg:col-span-7 space-y-10">
@@ -32,7 +32,7 @@ export default function WhoWeAre() {
                 whileHover={{ y: -4 }}
                 className="group cursor-default"
               >
-                <div className="h-[2px] w-12 bg-brand-green/60 group-hover:w-20 group-hover:bg-brand-green transition-all duration-500 mb-6"></div>
+                <div className="h-[2px] w-12 bg-black/30 group-hover:w-20 group-hover:bg-black transition-all duration-500 mb-6"></div>
                 <h4 className="text-base font-bold text-black uppercase tracking-widest mb-3">
                   Conflict-Free
                 </h4>
@@ -49,7 +49,7 @@ export default function WhoWeAre() {
                 whileHover={{ y: -4 }}
                 className="group cursor-default"
               >
-                <div className="h-[2px] w-12 bg-brand-green/60 group-hover:w-20 group-hover:bg-brand-green transition-all duration-500 mb-6"></div>
+                <div className="h-[2px] w-12 bg-black/30 group-hover:w-20 group-hover:bg-black transition-all duration-500 mb-6"></div>
                 <h4 className="text-base font-bold text-black uppercase tracking-widest mb-3">
                   No Delegation
                 </h4>
@@ -61,11 +61,6 @@ export default function WhoWeAre() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-brand-green"></div>
-        <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-brand-green to-transparent"></div>
-        <div className="w-2 h-2 rounded-full bg-brand-green"></div>
       </div>
     </section>
   );

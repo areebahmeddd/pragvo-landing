@@ -2,13 +2,19 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import ContactModal from './ContactModal';
+import ConsultationModal from './ConsultationModal';
 
 export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   return (
     <>
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      <ConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+      />
       <section className="relative py-32 flex items-center justify-center overflow-hidden bg-transparent pt-28">
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
@@ -34,8 +40,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-black/80 font-medium leading-relaxed mb-10 max-w-3xl mx-auto"
           >
-            We architect debt, equity, and M&A solutions while simultaneously building the
-            organizational structures required to scale.
+            Strategic advisory for high-stakes capital transactions and human capital
+            transformation.
           </motion.p>
 
           <motion.div
@@ -45,7 +51,7 @@ export default function Hero() {
             className="flex justify-center"
           >
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsContactModalOpen(true)}
               className="group relative bg-black text-white px-7 py-3 flex items-center gap-3 text-base font-bold tracking-tight transition-all duration-300 rounded-full hover:-translate-y-0.5 overflow-hidden"
             >
               <span className="relative z-10">Get in touch</span>
@@ -57,11 +63,9 @@ export default function Hero() {
           </motion.div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col md:flex-row items-center gap-2 md:gap-3 max-w-[200px] md:max-w-none text-center">
-          <div className="w-2 h-2 rounded-full bg-brand-green hidden md:block"></div>
           <span className="text-xs font-bold tracking-[0.3em] text-black/50 uppercase leading-tight">
             Together Towards Tomorrow
           </span>
-          <div className="w-2 h-2 rounded-full bg-brand-green hidden md:block"></div>
         </div>
       </section>
     </>

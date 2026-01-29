@@ -30,7 +30,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             onClick={onClose}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
           />
-          <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div
+            className="fixed inset-0 flex items-center justify-center z-50 p-4"
+            onClick={onClose}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -41,9 +44,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             >
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center hover:opacity-60 transition-opacity"
+                className="absolute top-4 right-4 text-black/60 hover:text-black transition-colors"
               >
-                <X size={16} className="text-black" />
+                <X size={18} />
               </button>
 
               <div className="mb-4">
@@ -56,10 +59,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="space-y-2">
                 <a
                   href="tel:+919311142495"
-                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-brand-green/50 transition-all duration-300 group"
+                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-black/30 transition-all duration-300 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
-                    <Phone size={16} className="text-brand-green-dark" />
+                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
+                    <Phone size={16} className="text-black" />
                   </div>
                   <div className="flex-1">
                     <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
@@ -71,10 +74,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 <a
                   href="mailto:info@pragvo.in"
-                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-brand-green/50 transition-all duration-300 group"
+                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-black/30 transition-all duration-300 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center group-hover:bg-brand-green/20 transition-colors">
-                    <Mail size={16} className="text-brand-green-dark" />
+                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
+                    <Mail size={16} className="text-black" />
                   </div>
                   <div className="flex-1">
                     <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
@@ -85,14 +88,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </a>
 
                 <div className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5">
-                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center">
-                    <MapPin size={16} className="text-brand-green-dark" />
+                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
+                    <MapPin size={16} className="text-black" />
                   </div>
                   <div className="flex-1">
                     <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
                       Location
                     </div>
-                    <div className="text-sm font-semibold text-black">Bangalore, India</div>
+                    <div className="text-sm font-semibold text-black">New Delhi, India</div>
                   </div>
                 </div>
               </div>

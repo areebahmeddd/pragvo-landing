@@ -186,7 +186,7 @@ const ServiceCard = ({
             <motion.div
               whileHover={{ rotate: 5, scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="text-brand-green flex-shrink-0"
+              className="text-black flex-shrink-0"
             >
               {cloneElement(service.icon as ReactElement<{ size?: number }>, { size: 32 })}
             </motion.div>
@@ -222,7 +222,7 @@ const ServiceCard = ({
                   transition={{ delay: idx * 0.02 }}
                   className="flex items-start gap-2.5 group"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div>
                   <span className="text-base text-black/60 font-light leading-relaxed">
                     {detail}
                   </span>
@@ -264,7 +264,7 @@ export default function Services() {
               onClick={() => setActiveTab('IB')}
               className={`px-6 py-2 rounded-full text-xs font-black transition-all duration-300 tracking-[0.15em] ${
                 activeTab === 'IB'
-                  ? 'bg-brand-green text-black shadow-md'
+                  ? 'bg-black text-white shadow-md'
                   : 'text-black/60 hover:text-black'
               }`}
             >
@@ -274,7 +274,7 @@ export default function Services() {
               onClick={() => setActiveTab('HR')}
               className={`px-6 py-2 rounded-full text-xs font-black transition-all duration-300 tracking-[0.15em] ${
                 activeTab === 'HR'
-                  ? 'bg-brand-green text-black shadow-md'
+                  ? 'bg-black text-white shadow-md'
                   : 'text-black/60 hover:text-black'
               }`}
             >

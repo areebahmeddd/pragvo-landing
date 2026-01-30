@@ -30,10 +30,10 @@ export default function WhyPragvo() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-6xl font-extrabold text-black tracking-tighter leading-[0.95] mb-6">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-brand-blue tracking-tighter leading-[0.95] mb-6">
               Senior attention. <br /> Uncompromised.
             </h2>
-            <p className="text-base md:text-lg text-black/70 font-light leading-relaxed">
+            <p className="text-base md:text-lg text-brand-light-blue/80 font-light leading-relaxed">
               We operate at the intersection of capital strategy and human talent, delivering the
               direct attention of seasoned partners to every mandate.
             </p>
@@ -54,15 +54,15 @@ export default function WhyPragvo() {
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: 'spring', stiffness: 400 }}
-                    className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-black/20 bg-white shadow-sm flex items-center justify-center transition-all duration-300"
+                    className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-brand-green bg-white shadow-sm flex items-center justify-center transition-all duration-300"
                   >
-                    <span className="text-xl font-black text-black">{idx + 1}</span>
+                    <span className="text-xl font-black text-brand-green">{idx + 1}</span>
                   </motion.div>
                   <div className="flex-1 pt-1">
-                    <h4 className="text-base font-black text-black uppercase tracking-widest mb-2">
+                    <h4 className="text-base font-black text-brand-blue uppercase tracking-widest mb-2">
                       {item.title}
                     </h4>
-                    <p className="text-base text-black/60 font-light leading-relaxed">
+                    <p className="text-base text-brand-light-blue/70 font-light leading-relaxed">
                       {item.text}
                     </p>
                   </div>

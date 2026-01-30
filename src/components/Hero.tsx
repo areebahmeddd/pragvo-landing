@@ -24,21 +24,21 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] tracking-tight mb-8"
           >
-            <span className="text-black">Strategic Capital &</span>
+            <span className="text-brand-blue">Strategic Capital &</span>
             <br />
-            <span className="text-black relative inline-block">
+            <span className="text-brand-blue relative inline-block">
               HR Advisory
-              <span className="absolute bottom-2 left-0 w-full h-6 bg-black/20 -z-10"></span>
+              <span className="absolute bottom-2 left-0 w-full h-6 bg-brand-green/30 -z-10"></span>
             </span>
             <br />
-            <span className="text-black">for India's Growth Leaders</span>
+            <span className="text-brand-blue">for India's Growth Leaders</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-black/80 font-medium leading-relaxed mb-10 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-brand-light-blue/90 font-medium leading-relaxed mb-10 max-w-3xl mx-auto"
           >
             Strategic advisory for high-stakes capital transactions and human capital
             transformation.
@@ -52,7 +52,7 @@ export default function Hero() {
           >
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="group relative bg-black text-white px-7 py-3 flex items-center gap-3 text-base font-bold tracking-tight transition-all duration-300 rounded-full hover:-translate-y-0.5 overflow-hidden"
+              className="group relative bg-gradient-to-r from-brand-green to-brand-lime text-white px-7 py-3 flex items-center gap-3 text-base font-bold tracking-tight transition-all duration-300 rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-green/30 overflow-hidden"
             >
               <span className="relative z-10">Get in touch</span>
               <ArrowRight
@@ -63,7 +63,7 @@ export default function Hero() {
           </motion.div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col md:flex-row items-center gap-2 md:gap-3 max-w-[200px] md:max-w-none text-center">
-          <span className="text-xs font-bold tracking-[0.3em] text-black/50 uppercase leading-tight">
+          <span className="text-xs font-bold tracking-[0.3em] text-brand-light-blue/60 uppercase leading-tight">
             Together Towards Tomorrow
           </span>
         </div>

@@ -44,14 +44,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             >
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-black/60 hover:text-black transition-colors"
+                className="absolute top-4 right-4 text-brand-light-blue/60 hover:text-brand-blue transition-colors"
               >
                 <X size={18} />
               </button>
 
               <div className="mb-4">
-                <h3 className="text-2xl font-bold text-black mb-1">Let's Connect</h3>
-                <p className="text-black/60 text-xs font-light">
+                <h3 className="text-2xl font-bold text-brand-blue mb-1">Let's Connect</h3>
+                <p className="text-brand-light-blue/70 text-xs font-light">
                   Reach out to discuss your next strategic move.
                 </p>
               </div>
@@ -59,43 +59,43 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="space-y-2">
                 <a
                   href="tel:+919311142495"
-                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-black/30 transition-all duration-300 group"
+                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-brand-light-blue/10 hover:border-brand-green/40 transition-all duration-300 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
-                    <Phone size={16} className="text-black" />
+                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center">
+                    <Phone size={16} className="text-brand-green" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
+                    <div className="text-[10px] font-bold text-brand-light-blue/60 uppercase tracking-wider">
                       Phone
                     </div>
-                    <div className="text-sm font-semibold text-black">+91 93111-42495</div>
+                    <div className="text-sm font-semibold text-brand-blue">+91 93111-42495</div>
                   </div>
                 </a>
 
                 <a
                   href="mailto:info@pragvo.in"
-                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5 hover:border-black/30 transition-all duration-300 group"
+                  className="flex items-center gap-3 p-3 rounded-xl glass-light border border-brand-light-blue/10 hover:border-brand-green/40 transition-all duration-300 group"
                 >
-                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
-                    <Mail size={16} className="text-black" />
+                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center">
+                    <Mail size={16} className="text-brand-green" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
+                    <div className="text-[10px] font-bold text-brand-light-blue/60 uppercase tracking-wider">
                       Email
                     </div>
-                    <div className="text-sm font-semibold text-black">info@pragvo.in</div>
+                    <div className="text-sm font-semibold text-brand-blue">info@pragvo.in</div>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-3 p-3 rounded-xl glass-light border border-black/5">
-                  <div className="w-9 h-9 rounded-full bg-black/5 flex items-center justify-center">
-                    <MapPin size={16} className="text-black" />
+                <div className="flex items-center gap-3 p-3 rounded-xl glass-light border border-brand-light-blue/10">
+                  <div className="w-9 h-9 rounded-full bg-brand-green/10 flex items-center justify-center">
+                    <MapPin size={16} className="text-brand-green" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-[10px] font-bold text-black/50 uppercase tracking-wider">
+                    <div className="text-[10px] font-bold text-brand-light-blue/60 uppercase tracking-wider">
                       Location
                     </div>
-                    <div className="text-sm font-semibold text-black">New Delhi, India</div>
+                    <div className="text-sm font-semibold text-brand-blue">New Delhi, India</div>
                   </div>
                 </div>
               </div>

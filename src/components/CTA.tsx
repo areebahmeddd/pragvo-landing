@@ -26,7 +26,7 @@ export default function CTA() {
             </h2>
             <button
               onClick={() => setIsConsultationModalOpen(true)}
-              className="group relative px-6 py-2.5 bg-white text-black text-sm font-bold rounded-full transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 overflow-hidden"
+              className="group relative px-6 py-2.5 bg-gradient-to-r from-brand-green to-brand-lime text-white text-sm font-bold rounded-full transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-green/30 overflow-hidden"
             >
               <span className="relative z-10">Schedule Consultation</span>
               <ArrowUpRight

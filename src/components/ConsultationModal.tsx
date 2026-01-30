@@ -163,19 +163,19 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', duration: 0.5 }}
-              className="bg-white/95 backdrop-blur-sm rounded-3xl max-w-md w-full p-6 relative shadow-2xl my-8 overflow-x-hidden border border-black/10"
+              className="bg-white/95 backdrop-blur-sm rounded-3xl max-w-md w-full p-6 relative shadow-2xl my-8 overflow-x-hidden border border-brand-light-blue/20"
               onClick={e => e.stopPropagation()}
             >
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-black/60 hover:text-black transition-colors"
+                className="absolute top-4 right-4 text-brand-light-blue/60 hover:text-brand-blue transition-colors"
               >
                 <X size={18} />
               </button>
 
               <div className="mb-5">
-                <h3 className="text-2xl font-bold text-black mb-1">Schedule Consultation</h3>
-                <p className="text-black/60 text-xs font-light">
+                <h3 className="text-2xl font-bold text-brand-blue mb-1">Schedule Consultation</h3>
+                <p className="text-brand-light-blue/70 text-xs font-light">
                   We'll get back to you within 24 hours.
                 </p>
               </div>
@@ -184,13 +184,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5"
+                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
                   >
                     Full Name *
                   </label>
                   <div className="relative">
                     <User
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
                       size={16}
                     />
                     <input
@@ -200,7 +200,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-black/10 outline-none transition-colors text-sm text-black placeholder:text-black/30"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
                       placeholder="Your name"
                     />
                   </div>
@@ -209,13 +209,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5"
+                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
                   >
                     Email Address *
                   </label>
                   <div className="relative">
                     <Mail
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
                       size={16}
                     />
                     <input
@@ -225,7 +225,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-black/10 outline-none transition-colors text-sm text-black placeholder:text-black/30"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
                       placeholder="email@company.com"
                     />
                   </div>
@@ -234,13 +234,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5"
+                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
                   >
                     Phone Number *
                   </label>
                   <div className="relative">
                     <Phone
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
                       size={16}
                     />
                     <input
@@ -250,7 +250,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-black/10 outline-none transition-colors text-sm text-black placeholder:text-black/30"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
                       placeholder="+91 00000 00000"
                     />
                   </div>
@@ -259,13 +259,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="company"
-                    className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5"
+                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
                   >
                     Company
                   </label>
                   <div className="relative">
                     <Briefcase
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-black/40"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
                       size={16}
                     />
                     <input
@@ -274,29 +274,29 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-black/10 outline-none transition-colors text-sm text-black placeholder:text-black/30"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
                       placeholder="Company name"
                     />
                   </div>
                 </div>
 
                 <div className="relative service-dropdown">
-                  <label className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5">
                     Services of Interest *
                   </label>
                   <div
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="w-full px-3 py-2.5 rounded-lg border border-black/10 outline-none cursor-pointer transition-colors text-sm text-black bg-white min-h-[42px] flex items-center justify-between overflow-x-auto"
+                    className="w-full px-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none cursor-pointer transition-colors text-sm text-brand-blue bg-white/50 min-h-[42px] flex items-center justify-between overflow-x-auto"
                   >
                     <div className="flex-1 overflow-x-auto">
                       {formData.services.length === 0 ? (
-                        <span className="text-black/30">Select services</span>
+                        <span className="text-brand-light-blue/40">Select services</span>
                       ) : (
                         <div className="flex flex-wrap gap-1.5">
                           {formData.services.map(serviceValue => (
                             <span
                               key={serviceValue}
-                              className="inline-flex items-center gap-1 px-2 py-0.5 bg-white border border-black/20 text-black rounded text-xs"
+                              className="inline-flex items-center gap-1 px-2 py-0.5 bg-brand-green/10 border border-brand-green/30 text-brand-green rounded text-xs font-semibold"
                             >
                               {allServices.find(s => s.value === serviceValue)?.label}
                               <button
@@ -305,7 +305,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                                   e.stopPropagation();
                                   toggleService(serviceValue);
                                 }}
-                                className="hover:text-black/70"
+                                className="hover:text-brand-green/70"
                               >
                                 <X size={12} />
                               </button>
@@ -316,35 +316,35 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                     </div>
                     <ChevronDown
                       size={16}
-                      className={`text-black/60 flex-shrink-0 ml-2 transition-transform duration-200 ${
+                      className={`text-brand-teal/70 flex-shrink-0 ml-2 transition-transform duration-200 ${
                         isDropdownOpen ? 'rotate-180' : ''
                       }`}
                     />
                   </div>
 
                   {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-black/10 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+                    <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-brand-light-blue/20 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
                       {serviceCategories.map((category, categoryIndex) => (
                         <div key={category.category}>
-                          <div className="px-3 py-2 text-xs font-bold text-black/50 uppercase tracking-wider">
+                          <div className="px-3 py-2 text-xs font-bold text-brand-teal/70 uppercase tracking-wider">
                             {category.category}
                           </div>
                           {category.services.map(service => (
                             <div
                               key={service.value}
                               onClick={() => toggleService(service.value)}
-                              className="px-3 py-2 hover:bg-black/5 cursor-pointer transition-colors flex items-center gap-2 text-sm pl-6"
+                              className="px-3 py-2 hover:bg-brand-green/5 cursor-pointer transition-colors flex items-center gap-2 text-sm pl-6"
                             >
-                              <div className="w-4 h-4 border border-black/20 rounded flex items-center justify-center">
+                              <div className="w-4 h-4 border border-brand-green/40 rounded flex items-center justify-center">
                                 {formData.services.includes(service.value) && (
-                                  <div className="w-2.5 h-2.5 bg-black rounded-sm" />
+                                  <div className="w-2.5 h-2.5 bg-brand-green rounded-sm" />
                                 )}
                               </div>
-                              <span className="text-black">{service.label}</span>
+                              <span className="text-brand-blue">{service.label}</span>
                             </div>
                           ))}
                           {categoryIndex < serviceCategories.length - 1 && (
-                            <div className="border-t border-black/5 my-1" />
+                            <div className="border-t border-brand-light-blue/10 my-1" />
                           )}
                         </div>
                       ))}
@@ -355,19 +355,19 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-[10px] font-bold text-black/70 uppercase tracking-wider mb-1.5"
+                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
                   >
                     Message
                   </label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 text-black/40" size={16} />
+                    <MessageSquare className="absolute left-3 top-3 text-brand-teal/60" size={16} />
                     <textarea
                       id="message"
                       name="message"
                       rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-black/10 outline-none transition-colors text-sm text-black placeholder:text-black/30 resize-none"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 resize-none bg-white/50"
                       placeholder="Brief description of your requirements"
                     />
                   </div>
@@ -387,7 +387,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <button
                   type="submit"
                   disabled={isSubmitting || formData.services.length === 0}
-                  className="w-full bg-black text-white py-2.5 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-black/90 transition-all duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-brand-green to-brand-lime text-white py-2.5 rounded-full font-bold text-xs uppercase tracking-wider hover:shadow-lg hover:shadow-brand-green/30 transition-all duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Submit Request'}
                 </button>

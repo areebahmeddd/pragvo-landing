@@ -2,6 +2,11 @@
 
 @theme {
   --color-brand-charcoal: #2d2d2d;
+  --color-brand-blue: #1e4d6b;
+  --color-brand-light-blue: #2c6b8e;
+  --color-brand-teal: #3a7f9f;
+  --color-brand-green: #8bc34a;
+  --color-brand-lime: #a3c644;
 }
 
 html {
@@ -12,12 +17,12 @@ body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #000000;
+  color: #1e4d6b;
   background-color: #ffffff;
 }
 
 ::selection {
-  background-color: #000000;
+  background-color: #8bc34a;
   color: #ffffff;
 }
 

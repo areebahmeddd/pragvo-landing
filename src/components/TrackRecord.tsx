@@ -41,10 +41,10 @@ function StatCard({ stat }: { stat: { label: string; value: string } }) {
         }
       }}
       viewport={{ once: true }}
-      className="glass-light p-8 rounded-2xl flex flex-col justify-center text-center transition-all duration-500 group cursor-default relative overflow-hidden border-2 border-black/10 hover:border-black/20 bg-white/40"
+      className="glass-light p-8 rounded-2xl flex flex-col justify-center text-center transition-all duration-500 group cursor-default relative overflow-hidden border-2 border-brand-green/20 hover:border-brand-green/40 bg-white/40"
     >
       <div className="relative z-10">
-        <div className="text-3xl md:text-4xl font-black text-black tracking-tighter mb-3 leading-none">
+        <div className="text-3xl md:text-4xl font-black text-brand-blue tracking-tighter mb-3 leading-none">
           {hasAnimated ? (
             <CountUpNumber
               end={num}
@@ -57,7 +57,7 @@ function StatCard({ stat }: { stat: { label: string; value: string } }) {
             stat.value
           )}
         </div>
-        <div className="text-xs font-bold text-black/60 uppercase tracking-widest leading-tight">
+        <div className="text-xs font-bold text-brand-light-blue/70 uppercase tracking-widest leading-tight">
           {stat.label}
         </div>
       </div>
@@ -121,10 +121,10 @@ export default function TrackRecord() {
       <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <span className="text-xs font-bold tracking-[0.5em] text-black/50 uppercase mb-4 block decoration-black underline underline-offset-8 decoration-2">
+          <span className="text-xs font-bold tracking-[0.5em] text-brand-teal/70 uppercase mb-4 block decoration-brand-green underline underline-offset-8 decoration-2">
             Our Scale
           </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight text-black">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight text-brand-blue">
             Proven Results,
             <br />
             Nationwide Presence.

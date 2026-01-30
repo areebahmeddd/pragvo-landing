@@ -176,17 +176,17 @@ const ServiceCard = ({
         <div className="mb-4 relative">
           <div className="flex justify-between items-start">
             <div className="flex-1 pr-6">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-black mb-3">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-brand-blue mb-3">
                 {service.title}
               </h2>
-              <p className="text-base md:text-lg text-black/70 font-light leading-relaxed">
+              <p className="text-base md:text-lg text-brand-light-blue/80 font-light leading-relaxed">
                 {service.desc}
               </p>
             </div>
             <motion.div
               whileHover={{ rotate: 5, scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="text-black flex-shrink-0"
+              className="text-brand-teal flex-shrink-0"
             >
               {cloneElement(service.icon as ReactElement<{ size?: number }>, { size: 32 })}
             </motion.div>
@@ -202,7 +202,7 @@ const ServiceCard = ({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.03 }}
-              className="px-3 py-1.5 rounded-lg bg-blue-50 text-sm font-bold text-blue-900/80 uppercase tracking-wider border border-blue-100"
+              className="px-3 py-1.5 rounded-lg bg-brand-green/10 text-sm font-bold text-brand-green uppercase tracking-wider border border-brand-green/30"
             >
               {subService}
             </motion.div>
@@ -222,8 +222,8 @@ const ServiceCard = ({
                   transition={{ delay: idx * 0.02 }}
                   className="flex items-start gap-2.5 group"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-black mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div>
-                  <span className="text-base text-black/60 font-light leading-relaxed">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div>
+                  <span className="text-base text-brand-light-blue/70 font-light leading-relaxed">
                     {detail}
                   </span>
                 </motion.div>
@@ -254,18 +254,18 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black text-black tracking-tighter mb-4 leading-none"
+            className="text-5xl md:text-7xl font-black text-brand-blue tracking-tighter mb-4 leading-none"
           >
             Core Domains.
           </motion.h2>
 
-          <div className="inline-flex bg-white p-1.5 rounded-full shadow-md border border-black/10">
+          <div className="inline-flex bg-white p-1.5 rounded-full shadow-md border border-brand-light-blue/20">
             <button
               onClick={() => setActiveTab('IB')}
               className={`px-6 py-2 rounded-full text-xs font-black transition-all duration-300 tracking-[0.15em] ${
                 activeTab === 'IB'
-                  ? 'bg-black text-white shadow-md'
-                  : 'text-black/60 hover:text-black'
+                  ? 'bg-gradient-to-r from-brand-green to-brand-lime text-white shadow-md'
+                  : 'text-brand-light-blue/70 hover:text-brand-blue'
               }`}
             >
               INVESTMENT BANKING
@@ -274,8 +274,8 @@ export default function Services() {
               onClick={() => setActiveTab('HR')}
               className={`px-6 py-2 rounded-full text-xs font-black transition-all duration-300 tracking-[0.15em] ${
                 activeTab === 'HR'
-                  ? 'bg-black text-white shadow-md'
-                  : 'text-black/60 hover:text-black'
+                  ? 'bg-gradient-to-r from-brand-green to-brand-lime text-white shadow-md'
+                  : 'text-brand-light-blue/70 hover:text-brand-blue'
               }`}
             >
               HR ADVISORY
@@ -291,7 +291,7 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.4 }}
-              className="text-lg md:text-xl text-black/70 font-light leading-relaxed"
+              className="text-lg md:text-xl text-brand-light-blue/80 font-light leading-relaxed"
             >
               {activeTab === 'HR'
                 ? 'Strategic HR and talent solutions designed to build high-performing, scalable organizations.'

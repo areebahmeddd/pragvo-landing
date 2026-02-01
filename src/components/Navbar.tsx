@@ -24,7 +24,12 @@ export default function Navbar() {
             : 'glass-light shadow-xl shadow-black/8'
         }`}
       >
-        <div className="md:pr-6 md:border-r border-brand-blue/40">
+        <div className="md:pr-6 md:border-r border-brand-blue/40 flex items-center gap-2">
+          <img
+            src="/assets/logo.svg"
+            alt="Pragvo Logo"
+            className="w-6 h-6 md:w-7 md:h-7 rounded-full"
+          />
           <span className="text-brand-blue font-bold text-sm md:text-base tracking-tighter uppercase">
             Pragvo Advisors
           </span>

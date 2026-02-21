@@ -16,6 +16,13 @@ export default function Hero() {
         onClose={() => setIsConsultationModalOpen(false)}
       />
       <section className="relative py-32 flex items-center justify-center overflow-hidden bg-transparent pt-28">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img
+            src="/assets/logo.svg"
+            alt=""
+            className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] opacity-[0.16] object-contain"
+          />
+        </div>
         <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
         <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
           <motion.h1

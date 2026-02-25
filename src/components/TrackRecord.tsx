@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const stats = [
-  { label: 'Aggregate Transaction Value', value: '₹35,000 Cr+' },
+  { label: 'Aggregate Transaction Value', value: '₹10,000 Cr+' },
   { label: 'Advisory Experience', value: '85+ Yrs' },
-  { label: 'Successful Mandates', value: '250+' },
+  { label: 'Successful Mandates', value: '150+' },
   { label: 'Indian Markets Covered', value: '100%' },
 ];
 

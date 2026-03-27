@@ -1,29 +1,43 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, User, Mail, Phone, Briefcase, MessageSquare } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Briefcase,
+  ChevronDown,
+  Mail,
+  MessageSquare,
+  Phone,
+  User,
+  X,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { ADVISORY_SERVICE_GROUPS } from "../data/advisoryServiceCatalog";
 
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
+export default function ConsultationModal({
+  isOpen,
+  onClose,
+}: ConsultationModalProps) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
     services: [] as string[],
-    message: '',
+    message: "",
   });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === "Escape" && isOpen) {
         onClose();
       }
     };
@@ -31,24 +45,24 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     const handleClickOutside = (e: MouseEvent) => {
       if (isDropdownOpen) {
         const target = e.target as HTMLElement;
-        if (!target.closest('.service-dropdown')) {
+        if (!target.closest(".service-dropdown")) {
           setIsDropdownOpen(false);
         }
       }
     };
 
-    window.addEventListener('keydown', handleEscape);
-    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener("keydown", handleEscape);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      window.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose, isDropdownOpen]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
@@ -57,26 +71,26 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
-        company: formData.company || 'Not specified',
+        company: formData.company || "Not specified",
         services:
           formData.services.length > 0
             ? allServices
-                .filter(s => formData.services.includes(s.value))
-                .map(s => s.label)
-                .join(', ')
-            : 'Not specified',
-        message: formData.message || 'No additional message provided',
-        submission_date: new Date().toLocaleString('en-IN', {
-          timeZone: 'Asia/Kolkata',
-          dateStyle: 'full',
-          timeStyle: 'short',
+                .filter((s) => formData.services.includes(s.value))
+                .map((s) => s.label)
+                .join(", ")
+            : "Not specified",
+        message: formData.message || "No additional message provided",
+        submission_date: new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          dateStyle: "full",
+          timeStyle: "short",
         }),
       };
 
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        emailData
+        emailData,
       );
 
       await emailjs.send(
@@ -85,63 +99,55 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
         {
           to_name: formData.name,
           to_email: formData.email,
-        }
+        },
       );
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', company: '', services: [], message: '' });
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        services: [],
+        message: "",
+      });
 
       setTimeout(() => {
         onClose();
-        setSubmitStatus('idle');
+        setSubmitStatus("idle");
       }, 2000);
     } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitStatus('error');
+      console.error("Email send failed:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
   const toggleService = (service: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       services: prev.services.includes(service)
-        ? prev.services.filter(s => s !== service)
+        ? prev.services.filter((s) => s !== service)
         : [...prev.services, service],
     }));
   };
 
-  const serviceCategories = [
-    {
-      category: 'Investment Banking',
-      services: [
-        { value: 'debt-capital', label: 'Debt Capital Markets' },
-        { value: 'equity-capital', label: 'Equity Capital Markets' },
-        { value: 'ma', label: 'Mergers & Acquisitions' },
-      ],
-    },
-    {
-      category: 'HR Advisory',
-      services: [
-        { value: 'talent-acquisition', label: 'Talent Acquisition' },
-        { value: 'talent-development', label: 'Talent Development' },
-        { value: 'org-design', label: 'Organization Design' },
-        { value: 'hris', label: 'HRIS Implementation' },
-        { value: 'performance-mgmt', label: 'Performance Management' },
-        { value: 'compensation', label: 'Compensation & Rewards' },
-      ],
-    },
-  ];
+  const serviceCategories = ADVISORY_SERVICE_GROUPS.map((g) => ({
+    category: g.category,
+    services: g.services.map((s) => ({ value: s.id, label: s.title })),
+  }));
 
-  const allServices = serviceCategories.flatMap(cat => cat.services);
+  const allServices = serviceCategories.flatMap((cat) => cat.services);
 
   return (
     <AnimatePresence>
@@ -152,29 +158,31 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
           />
           <div
-            className="fixed inset-0 flex items-center justify-center z-50 p-4 overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
             onClick={onClose}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', duration: 0.5 }}
-              className="bg-white/95 backdrop-blur-sm rounded-3xl max-w-md w-full p-6 relative shadow-2xl my-8 overflow-x-hidden border border-brand-light-blue/20"
-              onClick={e => e.stopPropagation()}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="border-brand-light-blue/20 relative my-8 w-full max-w-md overflow-x-hidden rounded-3xl border bg-white/95 p-6 shadow-2xl backdrop-blur-sm"
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-brand-light-blue/60 hover:text-brand-blue transition-colors"
+                className="text-brand-light-blue/60 hover:text-brand-blue absolute top-4 right-4 transition-colors"
               >
                 <X size={18} />
               </button>
 
               <div className="mb-5">
-                <h3 className="text-2xl font-bold text-brand-blue mb-1">Schedule Consultation</h3>
+                <h3 className="text-brand-blue mb-1 text-2xl font-bold">
+                  Schedule Consultation
+                </h3>
                 <p className="text-brand-light-blue/70 text-xs font-light">
                   We'll get back to you within 24 hours.
                 </p>
@@ -184,13 +192,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
+                    className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase"
                   >
                     Full Name *
                   </label>
                   <div className="relative">
                     <User
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
+                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
                     />
                     <input
@@ -200,7 +208,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
+                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
                       placeholder="Your name"
                     />
                   </div>
@@ -209,13 +217,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
+                    className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase"
                   >
                     Email Address *
                   </label>
                   <div className="relative">
                     <Mail
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
+                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
                     />
                     <input
@@ -225,7 +233,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
+                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
                       placeholder="email@company.com"
                     />
                   </div>
@@ -234,13 +242,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
+                    className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase"
                   >
                     Phone Number *
                   </label>
                   <div className="relative">
                     <Phone
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
+                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
                     />
                     <input
@@ -250,7 +258,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
+                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
                       placeholder="+91 00000 00000"
                     />
                   </div>
@@ -259,13 +267,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="company"
-                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
+                    className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase"
                   >
                     Company
                   </label>
                   <div className="relative">
                     <Briefcase
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-teal/60"
+                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
                     />
                     <input
@@ -274,34 +282,40 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 bg-white/50"
+                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
                       placeholder="Company name"
                     />
                   </div>
                 </div>
 
-                <div className="relative service-dropdown">
-                  <label className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5">
+                <div className="service-dropdown relative">
+                  <label className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase">
                     Services of Interest *
                   </label>
                   <div
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="w-full px-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none cursor-pointer transition-colors text-sm text-brand-blue bg-white/50 min-h-[42px] flex items-center justify-between overflow-x-auto"
+                    className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue flex min-h-[42px] w-full cursor-pointer items-center justify-between overflow-x-auto rounded-lg border bg-white/50 px-3 py-2.5 text-sm transition-colors outline-none"
                   >
                     <div className="flex-1 overflow-x-auto">
                       {formData.services.length === 0 ? (
-                        <span className="text-brand-light-blue/40">Select services</span>
+                        <span className="text-brand-light-blue/40">
+                          Select services
+                        </span>
                       ) : (
                         <div className="flex flex-wrap gap-1.5">
-                          {formData.services.map(serviceValue => (
+                          {formData.services.map((serviceValue) => (
                             <span
                               key={serviceValue}
-                              className="inline-flex items-center gap-1 px-2 py-0.5 bg-brand-green/10 border border-brand-green/30 text-brand-green rounded text-xs font-semibold"
+                              className="bg-brand-green/10 border-brand-green/30 text-brand-green inline-flex items-center gap-1 rounded border px-2 py-0.5 text-xs font-semibold"
                             >
-                              {allServices.find(s => s.value === serviceValue)?.label}
+                              {
+                                allServices.find(
+                                  (s) => s.value === serviceValue,
+                                )?.label
+                              }
                               <button
                                 type="button"
-                                onClick={e => {
+                                onClick={(e) => {
                                   e.stopPropagation();
                                   toggleService(serviceValue);
                                 }}
@@ -316,35 +330,37 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                     </div>
                     <ChevronDown
                       size={16}
-                      className={`text-brand-teal/70 flex-shrink-0 ml-2 transition-transform duration-200 ${
-                        isDropdownOpen ? 'rotate-180' : ''
+                      className={`text-brand-teal/70 ml-2 flex-shrink-0 transition-transform duration-200 ${
+                        isDropdownOpen ? "rotate-180" : ""
                       }`}
                     />
                   </div>
 
                   {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-brand-light-blue/20 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+                    <div className="border-brand-light-blue/20 absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(22rem,55vh)] overflow-y-auto rounded-lg border bg-white shadow-lg">
                       {serviceCategories.map((category, categoryIndex) => (
                         <div key={category.category}>
-                          <div className="px-3 py-2 text-xs font-bold text-brand-teal/70 uppercase tracking-wider">
+                          <div className="text-brand-teal/70 px-3 py-2 text-xs font-bold tracking-wider uppercase">
                             {category.category}
                           </div>
-                          {category.services.map(service => (
+                          {category.services.map((service) => (
                             <div
                               key={service.value}
                               onClick={() => toggleService(service.value)}
-                              className="px-3 py-2 hover:bg-brand-green/5 cursor-pointer transition-colors flex items-center gap-2 text-sm pl-6"
+                              className="hover:bg-brand-green/5 flex cursor-pointer items-center gap-2 px-3 py-2 pl-6 text-sm transition-colors"
                             >
-                              <div className="w-4 h-4 border border-brand-green/40 rounded flex items-center justify-center">
+                              <div className="border-brand-green/40 flex h-4 w-4 items-center justify-center rounded border">
                                 {formData.services.includes(service.value) && (
-                                  <div className="w-2.5 h-2.5 bg-brand-green rounded-sm" />
+                                  <div className="bg-brand-green h-2.5 w-2.5 rounded-sm" />
                                 )}
                               </div>
-                              <span className="text-brand-blue">{service.label}</span>
+                              <span className="text-brand-blue">
+                                {service.label}
+                              </span>
                             </div>
                           ))}
                           {categoryIndex < serviceCategories.length - 1 && (
-                            <div className="border-t border-brand-light-blue/10 my-1" />
+                            <div className="border-brand-light-blue/10 my-1 border-t" />
                           )}
                         </div>
                       ))}
@@ -355,41 +371,46 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-[10px] font-bold text-brand-light-blue/80 uppercase tracking-wider mb-1.5"
+                    className="text-brand-light-blue/80 mb-1.5 block text-[10px] font-bold tracking-wider uppercase"
                   >
                     Message
                   </label>
                   <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 text-brand-teal/60" size={16} />
+                    <MessageSquare
+                      className="text-brand-teal/60 absolute top-3 left-3"
+                      size={16}
+                    />
                     <textarea
                       id="message"
                       name="message"
                       rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-brand-light-blue/20 focus:border-brand-green/40 outline-none transition-colors text-sm text-brand-blue placeholder:text-brand-light-blue/40 resize-none bg-white/50"
+                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full resize-none rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
                       placeholder="Brief description of your requirements"
                     />
                   </div>
                 </div>
 
-                {submitStatus === 'success' && (
-                  <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">
-                    Request submitted successfully! We'll get back to you within 24 hours.
+                {submitStatus === "success" && (
+                  <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+                    Request submitted successfully! We'll get back to you within
+                    24 hours.
                   </div>
                 )}
-                {submitStatus === 'error' && (
-                  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm">
-                    Failed to submit. Please try again or email us directly at info@pragvo.in
+                {submitStatus === "error" && (
+                  <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                    Failed to submit. Please try again or email us directly at
+                    info@pragvo.in
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={isSubmitting || formData.services.length === 0}
-                  className="w-full bg-gradient-to-r from-brand-green to-brand-lime text-white py-2.5 rounded-full font-bold text-xs uppercase tracking-wider hover:shadow-lg hover:shadow-brand-green/30 transition-all duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="from-brand-green to-brand-lime hover:shadow-brand-green/30 mt-2 w-full rounded-full bg-gradient-to-r py-2.5 text-xs font-bold tracking-wider text-white uppercase transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Sending...' : 'Submit Request'}
+                  {isSubmitting ? "Sending..." : "Submit Request"}
                 </button>
               </form>
             </motion.div>

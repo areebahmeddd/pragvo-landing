@@ -24,15 +24,18 @@ Pragvo Advisors LLP is a senior-led strategic advisory firm operating at the int
 - Talent Acquisition: Executive search, specialist hiring, volume recruitment
 - Talent Development: Leadership programs, coaching & mentoring, succession planning
 - Organization Design: Operating models, role architecture, governance frameworks
-- HRIS Implementation: System selection, configuration & migration, deployment & training
+- HRIS Implementation Support: System selection, configuration & migration, deployment & training
 - Performance Management: OKR frameworks, feedback systems, calibration processes
 - Compensation & Rewards: Benchmarking, incentive design, total rewards
+- Leadership, Coaching & Mentoring: Leadership acceleration, executive coaching, mentorship ecosystems
+- Culture Transformation: Culture diagnostics, behavioral alignment, strategic change
+- Organizational Effectiveness: Leadership alignment, talent assessment, employee experience
 
 ## Track Record
 
 - Aggregate Transaction Value: ₹35,000 Cr+
 - Advisory Experience: 85+ Years
-- Successful Mandates: 250+
+- Successful IB & HR Engagements: 250+
 - Indian Markets Covered: 100%
 
 ## Tech Stack
@@ -52,7 +55,7 @@ Pragvo Advisors LLP is a senior-led strategic advisory firm operating at the int
 
 ## Key Differentiators
 
-- Senior partner-led mandates (no delegation to junior staff)
+- Senior partner-led IB transactions and HR advisory engagements (no delegation to junior staff)
 - Conflict-free independence
 - Cross-border reach with local regulatory expertise
 - Rapid execution and transaction velocity

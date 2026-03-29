@@ -44,6 +44,14 @@ export const ADVISORY_SERVICE_GROUPS: AdvisoryServiceGroup[] = [
         id: "organizational-effectiveness",
         title: "Organizational Effectiveness",
       },
+      {
+        id: "corporate-events-leadership-offsites",
+        title: "Corporate Events & Leadership Offsites",
+      },
+      {
+        id: "corporate-gifting-employee-engagement",
+        title: "Corporate Gifting & Employee Engagement Solutions",
+      },
     ],
   },
 ];

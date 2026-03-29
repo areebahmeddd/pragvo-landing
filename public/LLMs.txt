@@ -2,63 +2,76 @@
 
 ## Website Overview
 
-Pragvo Advisors LLP is a senior-led strategic advisory firm operating at the intersection of capital strategy and human talent.
+Pragvo Advisors LLP is a senior-led strategic advisory firm at the intersection of capital strategy and human talent, focused on institutional clients and growth leaders in India.
 
 ## Site Structure
 
-- Hero (`/#`): Strategic Capital & HR Advisory value proposition
-- Who We Are (`/#`): Senior attention, conflict-free independence
-- Services (`/#services`): Investment Banking & HR Advisory domains
-- Why Pragvo (`/#`): Key differentiators and execution approach
-- Track Record (`/#track-record`): Performance metrics and statistics
-- Contact (`/#contact`): Location, contact information, and consultation scheduling
+- Hero (`/`): Strategic capital and HR advisory value proposition
+- Who We Are (`/`): Senior attention, conflict-free independence, partner-led delivery
+- Services (`/#services`): Core Domains — Investment Banking and HR Advisory (detailed cards per offering)
+- Why Pragvo (`/`): Differentiators and execution approach
+- Track Record (`/#track-record`): Public statistics and scale indicators
+- Contact (`/#contact`): Location, phone, email, schedule consultation, legal links
+- Privacy Policy (`/privacy-policy`), Terms of Service (`/terms-of-service`)
 
-## Core Services
+## Core Services (same titles and order as on-site)
 
 ### Investment Banking
-- Debt Capital Markets: Bonds, private credit, syndicated loans, liability management
-- Equity Capital Markets: IPO advisory, pre-IPO blocks, follow-on offerings
-- M&A Advisory: Special situations, cross-border (GCC/APAC), mergers & divestitures
+
+- Debt Capital Markets: Bonds, private credit, syndicated loans, hybrid and ESG-linked financing, liability management
+- Equity Capital Markets: IPO execution, follow-ons, block trades, PIPEs, convertibles, cross-border listings
+- Mergers & Acquisitions: Buy-side and sell-side, carve-outs, cross-border, special situations
 
 ### HR Advisory
-- Talent Acquisition: Executive search, specialist hiring, volume recruitment
-- Talent Development: Leadership programs, coaching & mentoring, succession planning
+
+- Talent Acquisition: Executive search, specialist and volume hiring, cross-border / international recruitment
+- Talent Development: Leadership programs, coaching and mentoring, succession planning
 - Organization Design: Operating models, role architecture, governance frameworks
-- HRIS Implementation Support: System selection, configuration & migration, deployment & training
-- Performance Management: OKR frameworks, feedback systems, calibration processes
-- Compensation & Rewards: Benchmarking, incentive design, total rewards
-- Leadership, Coaching & Mentoring: Leadership acceleration, executive coaching, mentorship ecosystems
-- Culture Transformation: Culture diagnostics, behavioral alignment, strategic change
+- HRIS Implementation Support: Vendor selection, configuration, migration, deployment, adoption
+- Performance Management: OKRs, feedback systems, calibration
+- Compensation & Rewards: Benchmarking, incentives, total rewards
+- Leadership, Coaching & Mentoring: Acceleration programs, executive coaching, mentorship ecosystems
+- Culture Transformation: Diagnostics, behavioral alignment, strategic change
 - Organizational Effectiveness: Leadership alignment, talent assessment, employee experience
+- Corporate Events & Leadership Offsites: Events, retreats, strategy offsites, team engagement
+- Corporate Gifting & Employee Engagement Solutions: Gifting, recognition, employer branding, milestones and celebrations
 
-## Track Record
+## Track Record (matches on-page figures)
 
-- Aggregate Transaction Value: ₹35,000 Cr+
-- Advisory Experience: 85+ Years
-- Successful IB & HR Engagements: 250+
+**Investment Banking**
+
+- Aggregate Transaction Value: ₹7,000 Cr+
+- Advisory Experience: 40+ Yrs
+- Successful Mandates: 40+
 - Indian Markets Covered: 100%
 
-## Tech Stack
+**HR Advisory**
 
-- Frontend: React 19.2, TypeScript 5.9, Vite 7.3
-- Styling: Tailwind CSS 4.1, Framer Motion 12.29
+- Advisory Experience: 70+ Yrs
+- Successful Mandates: 50+
+- Indian Markets Covered: 100%
+
+## Tech Stack (representative)
+
+- Frontend: React 19.x, TypeScript 5.9.x, Vite 7.3.x
+- Styling: Tailwind CSS 4.x, Framer Motion 12.x
 - Icons: Lucide React
-- Typography: Inter font family
+- Typography: Inter
 
-## Contact Information
+## Contact
 
 - Phone: +91 93111-42495
-- Email: `info@pragvo.in`
+- Email: info@pragvo.in
 - Location: New Delhi, India
-- LinkedIn: `https://linkedin.com/company/pragvo-advisors`
-- Instagram: `https://instagram.com/pragvo-advisors`
+- LinkedIn: https://linkedin.com/company/pragvo-advisors
+- X (Twitter): https://x.com/pragvo-advisors
 
 ## Key Differentiators
 
 - Senior partner-led IB transactions and HR advisory engagements (no delegation to junior staff)
 - Conflict-free independence
-- Cross-border reach with local regulatory expertise
-- Rapid execution and transaction velocity
+- Cross-border reach with local regulatory and cultural context
+- Lean structure for execution speed
 
 ## Legal
 

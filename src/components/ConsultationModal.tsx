@@ -337,7 +337,7 @@ export default function ConsultationModal({
                   </div>
 
                   {isDropdownOpen && (
-                    <div className="border-brand-light-blue/20 absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(22rem,55vh)] overflow-y-auto rounded-lg border bg-white shadow-lg">
+                    <div className="border-brand-light-blue/20 absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(38rem,75vh)] overflow-y-auto rounded-lg border bg-white shadow-lg">
                       {serviceCategories.map((category, categoryIndex) => (
                         <div key={category.category}>
                           <div className="text-brand-teal/70 px-3 py-2 text-xs font-bold tracking-wider uppercase">

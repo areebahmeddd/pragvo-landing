@@ -7,6 +7,8 @@ import {
 import {
   Award,
   Briefcase,
+  CalendarRange,
+  Gift,
   Globe,
   GraduationCap,
   Heart,
@@ -48,7 +50,24 @@ function initialServicesTab(): "HR" | "IB" {
   return "IB";
 }
 
-const hrServices: ServiceItem[] = [
+function orderServicesByCatalog(
+  cards: ServiceItem[],
+  tab: "HR" | "IB",
+): ServiceItem[] {
+  const catalog = ADVISORY_SERVICE_GROUPS.find((g) => g.tab === tab)!.services;
+  const byId = new Map(cards.map((s) => [s.id, s]));
+  return catalog.map((c) => {
+    const item = byId.get(c.id);
+    if (!item) {
+      throw new Error(
+        `Services.tsx: add a Core Domains card for catalog id "${c.id}" (${c.title}).`,
+      );
+    }
+    return { ...item, title: c.title };
+  });
+}
+
+const _hrServiceCards: ServiceItem[] = [
   {
     id: "talent-acquisition",
     icon: <Search />,
@@ -217,9 +236,49 @@ const hrServices: ServiceItem[] = [
       "Structured interventions to improve performance outcomes",
     ],
   },
+  {
+    id: "corporate-events-leadership-offsites",
+    icon: <CalendarRange />,
+    title: "Corporate Events & Leadership Offsites",
+    desc: "Design and facilitation of corporate events, leadership retreats, strategy offsites, and team engagement programs aimed at strengthening collaboration, alignment, and organizational culture.",
+    subServices: [
+      "CORPORATE EVENTS",
+      "LEADERSHIP RETREATS",
+      "STRATEGY OFFSITES",
+      "TEAM ENGAGEMENT",
+    ],
+    details: [
+      "End-to-end design and facilitation of corporate events and forums",
+      "Leadership retreats and executive alignment sessions",
+      "Strategy offsites, workshops, and annual planning convenings",
+      "Team engagement programs that build trust and collaboration",
+      "Agenda design, stakeholder facilitation, and follow-through planning",
+      "Programming grounded in collaboration, strategic alignment, and culture",
+    ],
+  },
+  {
+    id: "corporate-gifting-employee-engagement",
+    icon: <Gift />,
+    title: "Corporate Gifting & Employee Engagement Solutions",
+    desc: "Curated corporate gifting solutions and employee recognition initiatives designed to enhance engagement, strengthen employer branding, and celebrate milestones, achievements, and key organizational events.",
+    subServices: [
+      "CORPORATE GIFTING",
+      "EMPLOYEE RECOGNITION",
+      "EMPLOYER BRANDING",
+      "MILESTONES & CELEBRATIONS",
+    ],
+    details: [
+      "Curated gifting strategies aligned with brand and workforce segments",
+      "Recognition programs for performance, tenure, and key milestones",
+      "Campaigns that reinforce employer brand and belonging",
+      "Celebrations for organizational achievements and landmark events",
+      "Vendor curation, logistics, and governance for scale",
+      "Inclusive, culturally appropriate programs across locations",
+    ],
+  },
 ];
 
-const ibServices: ServiceItem[] = [
+const _ibServiceCards: ServiceItem[] = [
   {
     id: "debt-capital-markets",
     icon: <IndianRupee />,
@@ -278,6 +337,9 @@ const ibServices: ServiceItem[] = [
     ],
   },
 ];
+
+const hrServices = orderServicesByCatalog(_hrServiceCards, "HR");
+const ibServices = orderServicesByCatalog(_ibServiceCards, "IB");
 
 const ServiceCard = ({
   service,

@@ -95,7 +95,7 @@ export default function Navbar() {
                 role="presentation"
               >
                 <div
-                  className="border-brand-light-blue/20 max-h-[min(24rem,70vh)] overflow-y-auto rounded-2xl border bg-white/95 py-2 shadow-2xl backdrop-blur-md"
+                  className="border-brand-light-blue/20 max-h-[min(38rem,75vh)] overflow-y-auto rounded-2xl border bg-white/95 py-2 shadow-2xl backdrop-blur-md"
                   role="menu"
                 >
                   {ADVISORY_SERVICE_GROUPS.map((group, gi) => (

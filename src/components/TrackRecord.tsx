@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const stats = [
-  { label: "Aggregate Transaction Value", value: "₹10,000 Cr+" },
-  { label: "Advisory Experience", value: "85+ Yrs" },
-  { label: "Successful IB & HR Engagements", value: "150+" },
+const ibStats = [
+  { label: "Aggregate Transaction Value", value: "₹7,000 Cr+" },
+  { label: "Advisory Experience", value: "40+ Yrs" },
+  { label: "Successful Mandates", value: "40+" },
+  { label: "Indian Markets Covered", value: "100%" },
+];
+
+const hrStats = [
+  { label: "Advisory Experience", value: "70+ Yrs" },
+  { label: "Successful Mandates", value: "50+" },
   { label: "Indian Markets Covered", value: "100%" },
 ];
 
@@ -136,10 +142,28 @@ export default function TrackRecord() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, idx) => (
-            <StatCard key={idx} stat={stat} />
-          ))}
+        <div className="space-y-14">
+          <div>
+            <h3 className="text-brand-teal/80 mb-6 text-center text-sm font-black tracking-[0.2em] uppercase md:mb-8">
+              Investment Banking
+            </h3>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {ibStats.map((stat) => (
+                <StatCard key={stat.label} stat={stat} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-brand-teal/80 mb-6 text-center text-sm font-black tracking-[0.2em] uppercase md:mb-8">
+              HR Advisory
+            </h3>
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">
+              {hrStats.map((stat) => (
+                <StatCard key={stat.label} stat={stat} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

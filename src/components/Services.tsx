@@ -1,9 +1,4 @@
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Award,
   Briefcase,
@@ -23,12 +18,14 @@ import {
 import {
   cloneElement,
   useEffect,
-  useRef,
   useState,
   type ReactElement,
   type ReactNode,
 } from "react";
+import { flushSync } from "react-dom";
+import { useLocation } from "react-router-dom";
 import { ADVISORY_SERVICE_GROUPS } from "../data/advisoryServiceCatalog";
+import SectionBackdrop from "./SectionBackdrop";
 
 interface ServiceItem {
   id: string;
@@ -39,15 +36,19 @@ interface ServiceItem {
   details?: string[];
 }
 
+function tabForServiceHash(hash: string): "HR" | "IB" | null {
+  const m = hash.match(/^#service-(.+)$/);
+  if (!m) return null;
+  const serviceId = m[1];
+  const group = ADVISORY_SERVICE_GROUPS.find((g) =>
+    g.services.some((s) => s.id === serviceId),
+  );
+  return group?.tab ?? null;
+}
+
 function initialServicesTab(): "HR" | "IB" {
   if (typeof window === "undefined") return "IB";
-  const m = window.location.hash.match(/^#service-(.+)$/);
-  if (!m) return "IB";
-  const serviceId = m[1];
-  for (const g of ADVISORY_SERVICE_GROUPS) {
-    if (g.services.some((s) => s.id === serviceId)) return g.tab;
-  }
-  return "IB";
+  return tabForServiceHash(window.location.hash) ?? "IB";
 }
 
 function orderServicesByCatalog(
@@ -344,213 +345,161 @@ const ibServices = orderServicesByCatalog(_ibServiceCards, "IB");
 const ServiceCard = ({
   service,
   index,
-  progress,
-  range,
-  targetScale,
 }: {
   service: ServiceItem;
   index: number;
-  progress: any;
-  range: number[];
-  targetScale: number;
 }) => {
-  const scale = useTransform(progress, range, [1, targetScale]);
-
   return (
     <div
       id={`service-${service.id}`}
-      className="sticky flex min-h-[45vh] scroll-mt-28 items-center justify-center px-6"
+      className="sticky flex min-h-[45vh] scroll-mt-28 items-start justify-center px-6 py-2 md:py-4"
       style={{ top: `calc(80px + ${index * 20}px)` }}
     >
-      <motion.div
-        style={{
-          scale,
-        }}
-        className="relative flex w-full max-w-6xl origin-top flex-col rounded-[2.5rem] border border-slate-200 bg-white p-8 text-black shadow-[0_1px_3px_0_rgb(0,0,0,0.1),0_1px_2px_-1px_rgb(0,0,0,0.1)] md:p-10"
-      >
-        {/* Header Section */}
-        <div className="relative mb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1 pr-6">
-              <h2 className="text-brand-blue mb-3 text-4xl leading-tight font-bold tracking-tight md:text-5xl">
-                {service.title}
-              </h2>
-              <p className="text-brand-light-blue/80 text-base leading-relaxed font-light md:text-lg">
-                {service.desc}
-              </p>
-            </div>
-            <motion.div
-              whileHover={{ rotate: 5, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="text-brand-teal flex-shrink-0"
-            >
-              {cloneElement(service.icon as ReactElement<{ size?: number }>, {
-                size: 32,
-              })}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Sub-services Tags - Compact */}
-        <div className="mb-4 flex flex-wrap gap-2">
-          {service.subServices.map((subService: string, idx: number) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.03 }}
-              className="bg-brand-green/10 text-brand-green border-brand-green/30 rounded-lg border px-3 py-1.5 text-sm font-bold tracking-wider uppercase"
-            >
-              {subService}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Detailed Points */}
-        {service.details && (
-          <div className="border-t border-slate-200 pt-4">
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              {service.details.map((detail: string, idx: number) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.02 }}
-                  className="group flex items-start gap-2.5"
-                >
-                  <div className="bg-brand-green mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full transition-transform duration-300 group-hover:scale-125"></div>
-                  <span className="text-brand-light-blue/70 text-base leading-relaxed font-light">
-                    {detail}
-                  </span>
-                </motion.div>
-              ))}
+      <div className="surface-glass-panel ring-brand-blue/15 relative flex h-fit w-full max-w-6xl flex-col self-start overflow-hidden rounded-[2.5rem] text-black ring-1">
+        <div
+          className="from-brand-lime via-brand-teal to-brand-blue h-1.5 w-full shrink-0 bg-gradient-to-r"
+          aria-hidden
+        />
+        <div className="flex flex-col p-8 md:p-10">
+          {/* Header Section */}
+          <div className="relative mb-4">
+            <div className="flex items-start justify-between">
+              <div className="flex-1 pr-6">
+                <h2 className="text-brand-blue mb-3 text-4xl leading-tight font-bold tracking-tight md:text-5xl">
+                  {service.title}
+                </h2>
+                <p className="text-brand-light-blue/80 text-base leading-relaxed font-light md:text-lg">
+                  {service.desc}
+                </p>
+              </div>
+              <div className="text-brand-teal flex-shrink-0">
+                {cloneElement(service.icon as ReactElement<{ size?: number }>, {
+                  size: 32,
+                })}
+              </div>
             </div>
           </div>
-        )}
-      </motion.div>
+
+          {/* Sub-services Tags - Compact */}
+          <div className="mb-4 flex flex-wrap gap-2">
+            {service.subServices.map((subService: string, idx: number) => (
+              <div
+                key={idx}
+                className="bg-brand-green/10 text-brand-green border-brand-green/30 rounded-lg border px-3 py-1.5 text-sm font-bold tracking-wider uppercase"
+              >
+                {subService}
+              </div>
+            ))}
+          </div>
+
+          {/* Detailed Points */}
+          {service.details && (
+            <div className="border-brand-blue/10 border-t pt-4">
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                {service.details.map((detail: string, idx: number) => (
+                  <div key={idx} className="group flex items-start gap-2.5">
+                    <div className="bg-brand-green mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full transition-transform duration-300 group-hover:scale-125"></div>
+                    <span className="text-brand-light-blue/70 text-base leading-relaxed font-light">
+                      {detail}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default function Services() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState<"HR" | "IB">(initialServicesTab);
   const currentServices = activeTab === "HR" ? hrServices : ibServices;
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
 
   useEffect(() => {
-    let scrollTimer: ReturnType<typeof setTimeout>;
+    const hash = location.hash;
+    const m = hash.match(/^#service-(.+)$/);
+    if (!m) return;
+    const serviceId = m[1];
+    const tab = tabForServiceHash(hash);
+    if (!tab) return;
 
-    const syncTabAndScrollFromHash = () => {
-      const m = window.location.hash.match(/^#service-(.+)$/);
-      if (!m) return;
-      const serviceId = m[1];
-      const group = ADVISORY_SERVICE_GROUPS.find((g) =>
-        g.services.some((s) => s.id === serviceId),
-      );
-      if (!group) return;
-      setActiveTab(group.tab);
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        document
-          .getElementById(`service-${serviceId}`)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 450);
-    };
+    flushSync(() => {
+      setActiveTab(tab);
+    });
 
-    syncTabAndScrollFromHash();
-    window.addEventListener("hashchange", syncTabAndScrollFromHash);
-    return () => {
-      window.removeEventListener("hashchange", syncTabAndScrollFromHash);
-      clearTimeout(scrollTimer);
-    };
-  }, []);
+    const el = document.getElementById(`service-${serviceId}`);
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [location.hash]);
 
   return (
-    <section id="services" className="relative bg-transparent">
-      <div className="absolute right-0 bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="mb-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-brand-blue mb-4 text-5xl leading-none font-black tracking-tighter md:text-7xl"
+    <section id="services" className="relative">
+      <SectionBackdrop
+        imageSrc="/assets/photos/boardroom.jpg"
+        strength="clear"
+        readableTint="content"
+        fixedCover
+      />
+      <div className="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-[1px] bg-gradient-to-r from-transparent via-black/20 to-transparent"></div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-6 text-5xl leading-none font-black tracking-tighter text-white md:text-7xl"
+        >
+          Core Domains.
+        </motion.h2>
+
+        <div className="mb-6 inline-flex rounded-full border border-white/20 bg-white/12 p-1.5 shadow-lg backdrop-blur-md">
+          <button
+            onClick={() => setActiveTab("IB")}
+            className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
+              activeTab === "IB"
+                ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
+                : "text-white/75 hover:text-white"
+            }`}
           >
-            Core Domains.
-          </motion.h2>
-
-          <div className="border-brand-light-blue/20 inline-flex rounded-full border bg-white p-1.5 shadow-md">
-            <button
-              onClick={() => setActiveTab("IB")}
-              className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
-                activeTab === "IB"
-                  ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
-                  : "text-brand-light-blue/70 hover:text-brand-blue"
-              }`}
-            >
-              INVESTMENT BANKING
-            </button>
-            <button
-              onClick={() => setActiveTab("HR")}
-              className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
-                activeTab === "HR"
-                  ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
-                  : "text-brand-light-blue/70 hover:text-brand-blue"
-              }`}
-            >
-              HR ADVISORY
-            </button>
-          </div>
+            INVESTMENT BANKING
+          </button>
+          <button
+            onClick={() => setActiveTab("HR")}
+            className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
+              activeTab === "HR"
+                ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
+                : "text-white/75 hover:text-white"
+            }`}
+          >
+            HR ADVISORY
+          </button>
         </div>
 
-        <div className="mx-auto mb-6 max-w-3xl text-center">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeTab}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4 }}
-              className="text-brand-light-blue/80 text-lg leading-relaxed font-light md:text-xl"
-            >
-              {activeTab === "HR"
-                ? "Strategic HR and talent solutions designed to build high-performing, scalable organizations."
-                : "Senior-led advisory delivering certainty of execution across complex capital and strategic transactions."}
-            </motion.p>
-          </AnimatePresence>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.4 }}
+            className="mx-auto max-w-3xl text-lg leading-relaxed font-normal text-white/85 md:text-xl"
+          >
+            {activeTab === "HR"
+              ? "Strategic HR and talent solutions designed to build high-performing, scalable organizations."
+              : "Senior-led advisory delivering certainty of execution across complex capital and strategic transactions."}
+          </motion.p>
+        </AnimatePresence>
       </div>
 
-      <div ref={container} className="pb-16">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {currentServices.map((service, i) => {
-              const targetScale = 1 - (currentServices.length - i) * 0.05;
-              return (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  index={i}
-                  progress={scrollYProgress}
-                  range={[i * 0.1, 1]}
-                  targetScale={targetScale}
-                />
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
+      <div key={activeTab} className="relative z-10 pb-10 md:pb-16">
+        {currentServices.map((service, i) => (
+          <ServiceCard key={service.id} service={service} index={i} />
+        ))}
+        <div
+          className="h-[min(18vh,10rem)] shrink-0 md:h-[min(22vh,14rem)]"
+          aria-hidden
+        />
       </div>
     </section>
   );

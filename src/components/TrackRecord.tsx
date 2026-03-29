@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import SectionBackdrop from "./SectionBackdrop";
 
 const ibStats = [
   { label: "Aggregate Transaction Value", value: "₹7,000 Cr+" },
@@ -47,7 +48,7 @@ function StatCard({ stat }: { stat: { label: string; value: string } }) {
         }
       }}
       viewport={{ once: true }}
-      className="glass-light group border-brand-green/20 hover:border-brand-green/40 relative flex cursor-default flex-col justify-center overflow-hidden rounded-2xl border-2 bg-white/40 p-8 text-center transition-all duration-500"
+      className="surface-glass-tile group hover:border-brand-green/55 border-brand-green/35 relative flex cursor-default flex-col justify-center overflow-hidden rounded-2xl border-2 p-8 text-center transition-all duration-500"
     >
       <div className="relative z-10">
         <div className="text-brand-blue mb-3 text-3xl leading-none font-black tracking-tighter md:text-4xl">
@@ -125,17 +126,19 @@ function CountUpNumber({
 
 export default function TrackRecord() {
   return (
-    <section
-      id="track-record"
-      className="relative overflow-hidden bg-transparent py-16"
-    >
-      <div className="absolute right-0 bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
+    <section id="track-record" className="relative overflow-hidden py-16">
+      <SectionBackdrop
+        imageSrc="/assets/photos/partnership.jpg"
+        strength="clear"
+        readableTint="content"
+      />
+      <div className="absolute right-0 bottom-0 left-0 z-10 h-[1px] bg-gradient-to-r from-transparent via-black/20 to-transparent"></div>
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div className="mb-16 text-center">
-          <span className="text-brand-teal/70 decoration-brand-green mb-4 block text-xs font-bold tracking-[0.5em] uppercase underline decoration-2 underline-offset-8">
+          <span className="text-brand-lime decoration-brand-green mb-4 block text-xs font-bold tracking-[0.5em] uppercase underline decoration-2 underline-offset-8">
             Our Scale
           </span>
-          <h2 className="text-brand-blue text-4xl leading-tight font-extrabold tracking-tighter md:text-6xl">
+          <h2 className="text-4xl leading-tight font-extrabold tracking-tighter text-white md:text-6xl">
             Proven Results,
             <br />
             Nationwide Presence.
@@ -144,7 +147,7 @@ export default function TrackRecord() {
 
         <div className="space-y-14">
           <div>
-            <h3 className="text-brand-teal/80 mb-6 text-center text-sm font-black tracking-[0.2em] uppercase md:mb-8">
+            <h3 className="mb-6 text-center text-sm font-black tracking-[0.2em] text-white/85 uppercase md:mb-8">
               Investment Banking
             </h3>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -155,7 +158,7 @@ export default function TrackRecord() {
           </div>
 
           <div>
-            <h3 className="text-brand-teal/80 mb-6 text-center text-sm font-black tracking-[0.2em] uppercase md:mb-8">
+            <h3 className="mb-6 text-center text-sm font-black tracking-[0.2em] text-white/85 uppercase md:mb-8">
               HR Advisory
             </h3>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-3">

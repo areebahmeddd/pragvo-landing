@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="mb-12 text-sm text-black/50">
-            Last Updated: February 01, 2026
+            Last updated: March 01, 2026
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -263,7 +263,7 @@ export default function PrivacyPolicy() {
               <p className="text-black/70">
                 We may update this Privacy Policy periodically to reflect
                 changes in our practices or legal requirements. We will notify
-                you of significant changes by updating the "Last Updated" date.
+                you of significant changes by updating the "Last updated" date.
                 Continued use of our Services after changes constitutes
                 acceptance of the updated policy.
               </p>
@@ -277,7 +277,7 @@ export default function PrivacyPolicy() {
                 If you have questions or concerns about this Privacy Policy or
                 our data practices, please contact us at:
               </p>
-              <div className="rounded-xl border border-black/10 bg-white/40 p-6">
+              <div className="surface-elevated ring-brand-blue/10 rounded-xl p-6 ring-1">
                 <p className="mb-2 text-black/70">
                   <strong>Email:</strong>{" "}
                   <a

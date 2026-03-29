@@ -169,7 +169,7 @@ export default function ConsultationModal({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="border-brand-light-blue/20 relative my-8 w-full max-w-md overflow-x-hidden rounded-3xl border bg-white/95 p-6 shadow-2xl backdrop-blur-sm"
+              className="surface-elevated border-brand-light-blue/25 relative my-8 w-full max-w-md overflow-x-hidden rounded-3xl p-6 backdrop-blur-[2px]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -208,7 +208,7 @@ export default function ConsultationModal({
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Your name"
                     />
                   </div>
@@ -233,7 +233,7 @@ export default function ConsultationModal({
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="email@company.com"
                     />
                   </div>
@@ -258,7 +258,7 @@ export default function ConsultationModal({
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="+91 00000 00000"
                     />
                   </div>
@@ -282,7 +282,7 @@ export default function ConsultationModal({
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Company name"
                     />
                   </div>
@@ -294,7 +294,7 @@ export default function ConsultationModal({
                   </label>
                   <div
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue flex min-h-[42px] w-full cursor-pointer items-center justify-between overflow-x-auto rounded-lg border bg-white/50 px-3 py-2.5 text-sm transition-colors outline-none"
+                    className="surface-input text-brand-blue flex min-h-[42px] w-full cursor-pointer items-center justify-between overflow-x-auto rounded-lg px-3 py-2.5 text-sm transition-colors"
                   >
                     <div className="flex-1 overflow-x-auto">
                       {formData.services.length === 0 ? (
@@ -337,7 +337,7 @@ export default function ConsultationModal({
                   </div>
 
                   {isDropdownOpen && (
-                    <div className="border-brand-light-blue/20 absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(38rem,75vh)] overflow-y-auto rounded-lg border bg-white shadow-lg">
+                    <div className="surface-glass-popover absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(38rem,75vh)] overflow-y-auto rounded-lg">
                       {serviceCategories.map((category, categoryIndex) => (
                         <div key={category.category}>
                           <div className="text-brand-teal/70 px-3 py-2 text-xs font-bold tracking-wider uppercase">
@@ -386,7 +386,7 @@ export default function ConsultationModal({
                       rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      className="border-brand-light-blue/20 focus:border-brand-green/40 text-brand-blue placeholder:text-brand-light-blue/40 w-full resize-none rounded-lg border bg-white/50 py-2.5 pr-3 pl-10 text-sm transition-colors outline-none"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full resize-none rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Brief description of your requirements"
                     />
                   </div>

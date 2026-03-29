@@ -23,7 +23,7 @@ export default function TermsOfService() {
             Terms of Service
           </h1>
           <p className="mb-12 text-sm text-black/50">
-            Last updated: March 28, 2026
+            Last updated: March 01, 2026
           </p>
 
           <div className="prose prose-lg max-w-none">
@@ -329,7 +329,7 @@ export default function TermsOfService() {
                 15. Contact
               </h2>
               <p className="mb-4 text-black/70">Questions about these Terms:</p>
-              <div className="rounded-xl border border-black/10 bg-white/40 p-6">
+              <div className="surface-elevated ring-brand-blue/10 rounded-xl p-6 ring-1">
                 <p className="mb-2 text-black/70">
                   <strong>Email:</strong>{" "}
                   <a

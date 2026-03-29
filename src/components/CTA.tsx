@@ -22,7 +22,7 @@ export default function CTA() {
       />
       <section
         id="contact"
-        className="from-brand-charcoal relative overflow-hidden rounded-t-[3rem] bg-gradient-to-b to-black pt-12 pb-6 text-white"
+        className="from-brand-charcoal relative overflow-hidden bg-gradient-to-b to-black pt-12 pb-6 text-white"
       >
         <div className="from-brand-charcoal/40 absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] via-transparent to-transparent" />
 

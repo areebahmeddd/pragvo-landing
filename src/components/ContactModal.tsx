@@ -39,7 +39,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-sm rounded-3xl border border-black/10 bg-white/95 p-6 shadow-2xl backdrop-blur-sm"
+              className="surface-elevated relative w-full max-w-sm rounded-3xl p-6 backdrop-blur-[2px]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -61,7 +61,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="space-y-2">
                 <a
                   href="tel:+919311142495"
-                  className="glass-light border-brand-light-blue/10 hover:border-brand-green/40 group flex items-center gap-3 rounded-xl border p-3 transition-all duration-300"
+                  className="surface-glass-tile group ring-brand-blue/12 hover:ring-brand-green/35 flex items-center gap-3 rounded-xl p-3 ring-1 transition-all duration-300"
                 >
                   <div className="bg-brand-green/10 flex h-9 w-9 items-center justify-center rounded-full">
                     <Phone size={16} className="text-brand-green" />
@@ -78,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 <a
                   href="mailto:info@pragvo.in"
-                  className="glass-light border-brand-light-blue/10 hover:border-brand-green/40 group flex items-center gap-3 rounded-xl border p-3 transition-all duration-300"
+                  className="surface-glass-tile group ring-brand-blue/12 hover:ring-brand-green/35 flex items-center gap-3 rounded-xl p-3 ring-1 transition-all duration-300"
                 >
                   <div className="bg-brand-green/10 flex h-9 w-9 items-center justify-center rounded-full">
                     <Mail size={16} className="text-brand-green" />
@@ -93,7 +93,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                 </a>
 
-                <div className="glass-light border-brand-light-blue/10 flex items-center gap-3 rounded-xl border p-3">
+                <div className="surface-glass-tile ring-brand-blue/12 flex items-center gap-3 rounded-xl p-3 ring-1">
                   <div className="bg-brand-green/10 flex h-9 w-9 items-center justify-center rounded-full">
                     <MapPin size={16} className="text-brand-green" />
                   </div>

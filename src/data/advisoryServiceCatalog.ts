@@ -1,4 +1,3 @@
-/** IB + HR offerings: Services section, navbar, Schedule Consultation — keep in sync with `Services.tsx`. */
 export type AdvisoryServiceTab = "IB" | "HR";
 
 export interface AdvisoryServiceOption {

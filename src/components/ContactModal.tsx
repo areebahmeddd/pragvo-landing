@@ -9,6 +9,15 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
         onClose();
@@ -22,27 +31,26 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-[200] flex flex-col">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            aria-hidden
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           />
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            onClick={onClose}
-          >
+          <div className="relative flex min-h-0 flex-1 justify-center overflow-y-auto overscroll-y-contain px-4 pt-28 pb-12 sm:pt-32">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="surface-elevated relative w-full max-w-sm rounded-3xl p-6 backdrop-blur-[2px]"
+              exit={{ opacity: 0, scale: 0.97, y: 12 }}
+              transition={{ type: "spring", duration: 0.45 }}
+              className="surface-elevated relative my-auto w-full max-w-sm rounded-3xl p-6 backdrop-blur-[2px]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                type="button"
                 onClick={onClose}
                 className="text-brand-light-blue/60 hover:text-brand-blue absolute top-4 right-4 transition-colors"
               >
@@ -115,7 +123,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </div>
             </motion.div>
           </div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );

@@ -1,10 +1,10 @@
 import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Briefcase,
+  Building2,
   ChevronDown,
   Mail,
-  MessageSquare,
+  MessageSquareText,
   Phone,
   User,
   X,
@@ -36,18 +36,27 @@ export default function ConsultationModal({
   >("idle");
 
   useEffect(() => {
+    if (!isOpen) {
+      setIsDropdownOpen(false);
+      return;
+    }
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
+      if (e.key === "Escape" && isOpen) onClose();
     };
 
     const handleClickOutside = (e: MouseEvent) => {
-      if (isDropdownOpen) {
-        const target = e.target as HTMLElement;
-        if (!target.closest(".service-dropdown")) {
-          setIsDropdownOpen(false);
-        }
+      if (!isDropdownOpen) return;
+      const target = e.target as HTMLElement;
+      if (!target.closest(".service-dropdown")) {
+        setIsDropdownOpen(false);
       }
     };
 
@@ -152,39 +161,46 @@ export default function ConsultationModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-[200] flex flex-col">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            aria-hidden
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           />
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
-            onClick={onClose}
+            className="relative flex min-h-0 flex-1 justify-center overflow-y-auto overscroll-y-contain px-4 pt-28 pb-12 sm:pt-32"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="consultation-modal-title"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="surface-elevated border-brand-light-blue/25 relative my-8 w-full max-w-md overflow-x-hidden rounded-3xl p-6 backdrop-blur-[2px]"
+              exit={{ opacity: 0, scale: 0.97, y: 12 }}
+              transition={{ type: "spring", duration: 0.45 }}
+              className="surface-elevated border-brand-light-blue/25 relative my-auto w-full max-w-md overflow-visible rounded-3xl p-6 shadow-xl backdrop-blur-[2px]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                type="button"
                 onClick={onClose}
-                className="text-brand-light-blue/60 hover:text-brand-blue absolute top-4 right-4 transition-colors"
+                className="text-brand-light-blue/60 hover:text-brand-blue absolute top-4 right-4 z-10 transition-colors"
               >
                 <X size={18} />
               </button>
 
               <div className="mb-5">
-                <h3 className="text-brand-blue mb-1 text-2xl font-bold">
+                <h3
+                  id="consultation-modal-title"
+                  className="text-brand-blue mb-1 text-2xl font-bold"
+                >
                   Schedule Consultation
                 </h3>
                 <p className="text-brand-light-blue/70 text-xs font-light">
-                  We'll get back to you within 24 hours.
+                  We usually reply within one business day.
                 </p>
               </div>
 
@@ -198,8 +214,8 @@ export default function ConsultationModal({
                   </label>
                   <div className="relative">
                     <User
-                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
+                      className="text-brand-light-blue/60 pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
                     />
                     <input
                       type="text"
@@ -210,6 +226,7 @@ export default function ConsultationModal({
                       onChange={handleChange}
                       className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Your name"
+                      autoComplete="name"
                     />
                   </div>
                 </div>
@@ -223,8 +240,8 @@ export default function ConsultationModal({
                   </label>
                   <div className="relative">
                     <Mail
-                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
+                      className="text-brand-light-blue/60 pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
                     />
                     <input
                       type="email"
@@ -235,6 +252,7 @@ export default function ConsultationModal({
                       onChange={handleChange}
                       className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="email@company.com"
+                      autoComplete="email"
                     />
                   </div>
                 </div>
@@ -248,8 +266,8 @@ export default function ConsultationModal({
                   </label>
                   <div className="relative">
                     <Phone
-                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
                       size={16}
+                      className="text-brand-light-blue/60 pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
                     />
                     <input
                       type="tel"
@@ -260,6 +278,7 @@ export default function ConsultationModal({
                       onChange={handleChange}
                       className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="+91 00000 00000"
+                      autoComplete="tel"
                     />
                   </div>
                 </div>
@@ -272,9 +291,9 @@ export default function ConsultationModal({
                     Company
                   </label>
                   <div className="relative">
-                    <Briefcase
-                      className="text-brand-teal/60 absolute top-1/2 left-3 -translate-y-1/2"
+                    <Building2
                       size={16}
+                      className="text-brand-light-blue/60 pointer-events-none absolute top-1/2 left-3 z-10 -translate-y-1/2"
                     />
                     <input
                       type="text"
@@ -284,6 +303,7 @@ export default function ConsultationModal({
                       onChange={handleChange}
                       className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Company name"
+                      autoComplete="organization"
                     />
                   </div>
                 </div>
@@ -294,9 +314,9 @@ export default function ConsultationModal({
                   </label>
                   <div
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="surface-input text-brand-blue flex min-h-[42px] w-full cursor-pointer items-center justify-between overflow-x-auto rounded-lg px-3 py-2.5 text-sm transition-colors"
+                    className="surface-input text-brand-blue flex min-h-[42px] w-full cursor-pointer items-center overflow-x-auto rounded-lg px-3 py-2.5 text-sm transition-colors"
                   >
-                    <div className="flex-1 overflow-x-auto">
+                    <div className="flex-1 overflow-x-auto pr-2">
                       {formData.services.length === 0 ? (
                         <span className="text-brand-light-blue/40">
                           Select services
@@ -329,35 +349,34 @@ export default function ConsultationModal({
                       )}
                     </div>
                     <ChevronDown
-                      size={16}
-                      className={`text-brand-teal/70 ml-2 flex-shrink-0 transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180" : ""
-                      }`}
+                      size={18}
+                      className="text-brand-light-blue/60 pointer-events-none flex-shrink-0"
                     />
                   </div>
 
                   {isDropdownOpen && (
-                    <div className="surface-glass-popover absolute top-full right-0 left-0 z-10 mt-1 max-h-[min(38rem,75vh)] overflow-y-auto rounded-lg">
+                    <div className="surface-glass-popover absolute top-full right-0 left-0 z-20 mt-1 max-h-56 overflow-y-auto overscroll-contain rounded-lg shadow-lg ring-1 ring-black/10">
                       {serviceCategories.map((category, categoryIndex) => (
                         <div key={category.category}>
                           <div className="text-brand-teal/70 px-3 py-2 text-xs font-bold tracking-wider uppercase">
                             {category.category}
                           </div>
                           {category.services.map((service) => (
-                            <div
+                            <button
                               key={service.value}
+                              type="button"
                               onClick={() => toggleService(service.value)}
-                              className="hover:bg-brand-green/5 flex cursor-pointer items-center gap-2 px-3 py-2 pl-6 text-sm transition-colors"
+                              className="hover:bg-brand-green/5 flex w-full cursor-pointer items-center gap-2 px-3 py-2 pl-6 text-left text-sm transition-colors"
                             >
-                              <div className="border-brand-green/40 flex h-4 w-4 items-center justify-center rounded border">
+                              <span className="border-brand-green/40 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border">
                                 {formData.services.includes(service.value) && (
-                                  <div className="bg-brand-green h-2.5 w-2.5 rounded-sm" />
+                                  <span className="bg-brand-green block h-2.5 w-2.5 rounded-sm" />
                                 )}
-                              </div>
+                              </span>
                               <span className="text-brand-blue">
                                 {service.label}
                               </span>
-                            </div>
+                            </button>
                           ))}
                           {categoryIndex < serviceCategories.length - 1 && (
                             <div className="border-brand-light-blue/10 my-1 border-t" />
@@ -376,9 +395,9 @@ export default function ConsultationModal({
                     Message
                   </label>
                   <div className="relative">
-                    <MessageSquare
-                      className="text-brand-teal/60 absolute top-3 left-3"
+                    <MessageSquareText
                       size={16}
+                      className="text-brand-light-blue/60 pointer-events-none absolute top-4 left-3 z-10"
                     />
                     <textarea
                       id="message"
@@ -386,7 +405,7 @@ export default function ConsultationModal({
                       rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 w-full resize-none rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
+                      className="surface-input text-brand-blue placeholder:text-brand-light-blue/40 min-h-[5.5rem] w-full resize-none rounded-lg py-2.5 pr-3 pl-10 text-sm transition-colors"
                       placeholder="Brief description of your requirements"
                     />
                   </div>
@@ -394,13 +413,12 @@ export default function ConsultationModal({
 
                 {submitStatus === "success" && (
                   <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-                    Request submitted successfully! We'll get back to you within
-                    24 hours.
+                    Request submitted. We will get back to you shortly.
                   </div>
                 )}
                 {submitStatus === "error" && (
                   <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-                    Failed to submit. Please try again or email us directly at
+                    Something went wrong. Please try again or email
                     info@pragvo.in
                   </div>
                 )}
@@ -415,7 +433,7 @@ export default function ConsultationModal({
               </form>
             </motion.div>
           </div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );

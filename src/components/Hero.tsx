@@ -35,12 +35,8 @@ export default function Hero() {
           >
             <span className="text-white">Strategic Capital &</span>
             <br />
-            <span className="relative inline-block text-white">
-              HR Advisory
-              <span
-                className="bg-brand-lime absolute bottom-2 left-0 h-2.5 w-full rounded-full opacity-90"
-                aria-hidden
-              />
+            <span className="inline-flex w-fit max-w-full flex-col items-center self-center text-white">
+              <span className="whitespace-nowrap">HR Advisory</span>
             </span>
             <br />
             <span className="text-white">for India&apos;s Growth Leaders</span>

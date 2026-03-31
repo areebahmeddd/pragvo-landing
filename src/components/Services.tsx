@@ -195,7 +195,7 @@ const _hrServiceCards: ServiceItem[] = [
       "1:1 executive and transition coaching",
       "360° leadership assessments and behavioral diagnostics",
       "Leaders-as-coaches capability building",
-      "Structured mentor–mentee program design",
+      "Structured mentor-mentee program design",
       "Women leadership pipeline and reverse mentoring initiatives",
     ],
   },
@@ -352,27 +352,27 @@ const ServiceCard = ({
   return (
     <div
       id={`service-${service.id}`}
-      className="sticky flex min-h-[45vh] scroll-mt-28 items-start justify-center px-6 py-2 md:py-4"
-      style={{ top: `calc(80px + ${index * 20}px)` }}
+      className="sticky flex min-h-[40vh] scroll-mt-28 items-start justify-center px-4 py-3 md:min-h-[45vh] md:px-6 md:py-4"
+      style={{ top: `calc(74px + ${index * 14}px)` }}
     >
-      <div className="surface-glass-panel ring-brand-blue/15 relative flex h-fit w-full max-w-6xl flex-col self-start overflow-hidden rounded-[2.5rem] text-black ring-1">
+      <div className="surface-glass-panel ring-brand-blue/25 relative flex h-fit w-full max-w-6xl flex-col self-start overflow-hidden rounded-3xl text-black ring-1 md:rounded-[2.5rem]">
         <div
           className="from-brand-lime via-brand-teal to-brand-blue h-1.5 w-full shrink-0 bg-gradient-to-r"
           aria-hidden
         />
-        <div className="flex flex-col p-8 md:p-10">
+        <div className="flex flex-col p-6 md:p-10">
           {/* Header Section */}
           <div className="relative mb-4">
             <div className="flex items-start justify-between">
-              <div className="flex-1 pr-6">
-                <h2 className="text-brand-blue mb-3 text-4xl leading-tight font-bold tracking-tight md:text-5xl">
+              <div className="flex-1 pr-3 md:pr-6">
+                <h2 className="text-brand-blue mb-3 text-3xl leading-tight font-bold tracking-tight md:text-5xl">
                   {service.title}
                 </h2>
-                <p className="text-brand-light-blue/80 text-base leading-relaxed font-light md:text-lg">
+                <p className="text-brand-light-blue/95 text-sm leading-relaxed font-normal md:text-lg">
                   {service.desc}
                 </p>
               </div>
-              <div className="text-brand-teal flex-shrink-0">
+              <div className="text-brand-teal hidden flex-shrink-0 md:block">
                 {cloneElement(service.icon as ReactElement<{ size?: number }>, {
                   size: 32,
                 })}
@@ -385,7 +385,7 @@ const ServiceCard = ({
             {service.subServices.map((subService: string, idx: number) => (
               <div
                 key={idx}
-                className="bg-brand-green/10 text-brand-green border-brand-green/30 rounded-lg border px-3 py-1.5 text-sm font-bold tracking-wider uppercase"
+                className="bg-brand-green/12 text-brand-green border-brand-green/35 rounded-lg border px-3 py-1.5 text-xs font-bold tracking-wider uppercase md:text-sm"
               >
                 {subService}
               </div>
@@ -394,12 +394,12 @@ const ServiceCard = ({
 
           {/* Detailed Points */}
           {service.details && (
-            <div className="border-brand-blue/10 border-t pt-4">
+            <div className="border-brand-blue/16 border-t pt-4">
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 {service.details.map((detail: string, idx: number) => (
                   <div key={idx} className="group flex items-start gap-2.5">
                     <div className="bg-brand-green mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full transition-transform duration-300 group-hover:scale-125"></div>
-                    <span className="text-brand-light-blue/70 text-base leading-relaxed font-light">
+                    <span className="text-brand-light-blue/90 text-sm leading-relaxed font-normal md:text-base">
                       {detail}
                     </span>
                   </div>
@@ -439,24 +439,24 @@ export default function Services() {
       <SectionBackdrop
         imageSrc="/assets/photos/boardroom.jpg"
         strength="clear"
-        readableTint="content"
+        readableTint="hero"
         fixedCover
       />
       <div className="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-[1px] bg-gradient-to-r from-transparent via-black/20 to-transparent"></div>
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 text-center md:py-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-6 text-5xl leading-none font-black tracking-tighter text-white md:text-7xl"
+          className="mb-6 text-4xl leading-none font-black tracking-tighter text-white md:text-7xl"
         >
           Core Domains.
         </motion.h2>
 
-        <div className="mb-6 inline-flex rounded-full border border-white/20 bg-white/12 p-1.5 shadow-lg backdrop-blur-md">
+        <div className="mb-6 inline-flex rounded-full border border-white/35 bg-white/20 p-1.5 shadow-lg backdrop-blur-md">
           <button
             onClick={() => setActiveTab("IB")}
-            className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
+            className={`rounded-full px-4 py-2 text-[10px] font-black tracking-[0.14em] transition-all duration-300 md:px-6 md:text-xs ${
               activeTab === "IB"
                 ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
                 : "text-white/75 hover:text-white"
@@ -466,7 +466,7 @@ export default function Services() {
           </button>
           <button
             onClick={() => setActiveTab("HR")}
-            className={`rounded-full px-6 py-2 text-xs font-black tracking-[0.15em] transition-all duration-300 ${
+            className={`rounded-full px-4 py-2 text-[10px] font-black tracking-[0.14em] transition-all duration-300 md:px-6 md:text-xs ${
               activeTab === "HR"
                 ? "from-brand-green to-brand-lime bg-gradient-to-r text-white shadow-md"
                 : "text-white/75 hover:text-white"
@@ -483,7 +483,7 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto max-w-3xl text-lg leading-relaxed font-normal text-white/85 md:text-xl"
+            className="mx-auto max-w-3xl text-base leading-relaxed font-medium text-white/92 md:text-xl"
           >
             {activeTab === "HR"
               ? "Strategic HR and talent solutions designed to build high-performing, scalable organizations."

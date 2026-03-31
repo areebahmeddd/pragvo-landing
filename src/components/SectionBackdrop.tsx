@@ -3,9 +3,9 @@ type BackdropStrength = "hero" | "soft" | "standard" | "muted" | "clear";
 export type ReadableTint = "none" | "hero" | "content";
 
 const readableTintClass: Record<Exclude<ReadableTint, "none">, string> = {
-  hero: "bg-gradient-to-b from-slate-950/72 via-slate-950/58 to-slate-950/88",
+  hero: "bg-gradient-to-b from-slate-950/56 via-slate-950/42 to-slate-950/66",
   content:
-    "bg-gradient-to-b from-slate-950/68 via-slate-950/52 to-slate-950/84",
+    "bg-gradient-to-b from-slate-950/62 via-slate-950/48 to-slate-950/76",
 };
 
 const veil: Record<Exclude<BackdropStrength, "clear">, string> = {

@@ -7,9 +7,11 @@ Pragvo Advisors LLP is a senior-led strategic advisory firm at the intersection 
 ## Site Structure
 
 - Hero (`/`): Strategic capital and HR advisory value proposition
-- Who We Are (`/`): Senior attention, conflict-free independence, partner-led delivery
+- About Us (`/#about`): Firm positioning, 80+ years HR depth, bespoke philosophy; cross-border lens and partner-led velocity
+- Our Identity (`/#identity`): Trusted, Independent, Unwavering pillars
 - Services (`/#services`): Core Domains — Investment Banking and HR Advisory (detailed cards per offering)
-- Why Pragvo (`/`): Differentiators and execution approach
+- Industries (`/#industries`): Sectors and industries served
+- Team (`/#team`): Leadership team and strategic advisors (bios)
 - Track Record (`/#track-record`): Public statistics and scale indicators
 - Contact (`/#contact`): Location, phone, email, schedule consultation, legal links
 - Privacy Policy (`/privacy-policy`), Terms of Service (`/terms-of-service`)
